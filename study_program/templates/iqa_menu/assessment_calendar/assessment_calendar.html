@@ -1,0 +1,153 @@
+<!--ASSESSMENT CALENDAR-->
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- <div class="container">
+
+    <div class="row">
+        <a href="{% url 'assessment_calendar' prev_month prev_year %}">prev</a>
+        {{month_name}} {{year}}
+        <a href="{% url 'assessment_calendar' next_month next_year %}">next</a>
+    </div>
+
+    <div class="row">
+        {% for date in date_name %}
+        <div class="col">
+            <button>{{date}}</button>
+        </div>
+        {% endfor %}
+    </div>
+
+
+    {% for week in day_in_month %}
+    <div class="row">
+        {% for day in week %}
+        <div class="col">
+            <button>{{day}}</button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+</div> -->
+<br />
+<br />
+
+<div class="container">
+    <!-- PROGRAM LIST HEADER -->
+    <div id="calendar-container-nav" class="container">
+        <br />
+        <div class="col">
+            <div class="row">
+
+                <div class="col text-center">
+                    <h4>Assessment Calendar</h4>
+                </div>
+
+            </div>
+        </div>
+        <br />
+    </div>
+
+
+    <div id="calendar-container" class="container text-center">
+        <br />
+        <div class="col">
+            <div class="row">
+                <!-- style="background-color: rgb(255, 56, 255);" -->
+
+                <div class="col">
+                    <a id="angle-double-icon" href="{% url 'assessment_calendar' prev_month prev_year %}"
+                        style="text-align: right;">
+                        <i class="fas fa-angle-double-left fa-3x"></i>
+                    </a>
+
+                    <h1 style="text-align: center; width:50%; display: inline-block;">
+                        {{month_name}} {{year}}
+                    </h1>
+
+                    <a id="angle-double-icon" href="{% url 'assessment_calendar' next_month next_year %}"
+                        style="text-align: left;">
+                        <i class="fas fa-angle-double-right fa-3x"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        <br />
+    </div>
+
+
+
+
+    <div id="calendar-table-container" class="container">
+        <br />
+        <div class="col">
+            <div class="row">
+
+                <div class="container">
+
+                    <div class="row">
+                        {% for date in date_name %}
+                        <div class="col text-center">
+                            <h5>{{date}}</h5>
+                            <!-- <button>{{date}}</button> -->
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <br />
+
+                    <!-- {% for week in day_in_month %}
+                    <div class="row">
+                        {% for day in week %}
+                        <div class="col">
+                            {% if day == 0 %}
+                            <a> </a>
+                            {% else %}
+                            <button>{{day}}</button>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endfor %} -->
+
+                    {% for week in day_in_month %}
+                    <div class="row">
+                        {% for day in week %}
+                        <!-- <button class="col text-center">
+                            {% if day == 0 %}
+                            &nbsp;
+                            {% else %}
+                            {{day}}
+                            {% endif %}
+                        </button> -->
+
+
+                        {% if day == 0 %}
+                        <button class="btn" disabled>&nbsp;</button>
+                        {% else %}
+                        <button class="btn text-center">{{day}}</button>
+                        {% endif %}
+
+
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
+
+                </div>
+
+
+            </div>
+        </div>
+
+        <br />
+
+    </div>
+
+
+
+</div>
+
+{% endblock %}

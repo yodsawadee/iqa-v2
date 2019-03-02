@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <br /><br />
+    <div class="col">
+        <a class="btn col-md-1"><br /><b></b></a>
+        <a class="btn col-md-0.5"><br /><b></b></a>
+
+        <a id="StudyProgram-btn" class="btn col-md-2" href="{% url 'all_program' %}">
+            <br /><b><br />Study Program<br />___________________</b></a>
+
+        <a class="btn col-md-0.5"><br /><b></b></a>
+
+        <a id="Professors-btn" class="btn col-md-2" href="{% url 'all_professor' %}">
+            <br /><b><br />Professors<br />___________________</b></a>
+
+        <a class="btn col-md-0.5"><br /><b></b></a>
+
+        <a id="Assessment-btn" class="btn col-md-2" href="{% url 'assessment_menu' %}">
+            <br /><b><br />Assessment<br />___________________</b></a>
+
+        <a class="btn col-md-0.5"><br /><b></b></a>
+
+        {% if request.user.is_superuser %}
+        <a id="IQA-btn" class="btn col-md-2" href="{% url 'iqa_menu' %}">
+            <br /><b><br />IQA Menu<br />___________________</b></a>
+
+        <a class="btn col-md-0.5"><br /><b></b></a>
+        {% else %}
+
+        <a id="Faculty-btn" class="btn col-md-2" href="{% url 'faculty_menu' %}">
+            <br /><b><br />Faculty Menu<br />___________________</b></a>
+
+        <a class="btn col-md-0.5"><br /><b></b></a>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
